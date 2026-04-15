@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry Jiya 🥺</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+        
+        .title-font {
+            font-family: 'Pacifico', cursive;
+        }
+        /* Floating hearts background */
+        
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff8fa3;
+            font-size: 24px;
+            opacity: 0;
+            animation: float 6s ease-in infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* Checkbox styling */
+        
+        .promise-item {
+            transition: all 0.2s;
+        }
+        
+        .promise-item:hover {
+            transform: translateX(5px);
+        }
+        /* Smooth movement for the runaway button */
+        
+        #noBtn {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center relative bg-pink-50 py-10">
+
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <div class="relative z-10 max-w-lg w-full mx-4 text-center" id="mainContainer">
+
+        <div class="bg-white/90 backdrop-blur-md p-6 sm:p-10 rounded-3xl shadow-2xl border-2 border-pink-100" id="apologyCard">
+
+            <img src="https://media.tenor.com/ef305O1I-wAAAAAi/tkthao219-peach.gif" alt="Crying Bear" class="w-32 h-32 mx-auto mb-4 rounded-xl">
+
+            <h1 class="text-4xl text-pink-500 title-font mb-4">
+                I'm so sorry, Jiya...
+            </h1>
+
+            <div class="text-gray-600 text-base sm:text-lg mb-6 leading-relaxed bg-pink-50/50 p-4 rounded-2xl">
+                <p>I know I messed up, and I hate seeing you upset. You mean the absolute world to me. Please give me a chance to make things right!</p>
+                <p class="mt-4 font-bold text-pink-400 text-right">- Yours, Aman ❤️</p>
+            </div>
+
+            <div class="text-left mb-8 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                <p class="font-bold text-gray-700 mb-3 text-sm uppercase tracking-wide">If you forgive me, I promise to:</p>
+                <div class="space-y-2 text-gray-600">
+                    <label class="flex items-center space-x-3 promise-item cursor-pointer">
+                        <input type="checkbox" class="form-checkbox text-pink-500 h-5 w-5 rounded border-gray-300 focus:ring-pink-400">
+                        <span>Buy you your favorite food 🍕</span>
+                    </label>
+                    <label class="flex items-center space-x-3 promise-item cursor-pointer">
+                        <input type="checkbox" class="form-checkbox text-pink-500 h-5 w-5 rounded border-gray-300 focus:ring-pink-400">
+                        <span>Listen to all your rants without interrupting 🤐</span>
+                    </label>
+                    <label class="flex items-center space-x-3 promise-item cursor-pointer">
+                        <input type="checkbox" class="form-checkbox text-pink-500 h-5 w-5 rounded border-gray-300 focus:ring-pink-400">
+                        <span>Give you endless cuddles & attention 🤗</span>
+                    </label>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                So... will you forgive me?
+            </h2>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 min-h-[100px] relative" id="buttonsContainer">
+                <button id="yesBtn" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 z-20">
+                    Yes! ❤️
+                </button>
+                <button id="noBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-10 rounded-full shadow transition-all z-20">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="successScreen" class="hidden relative z-10 flex flex-col items-center justify-center text-center px-4 w-full max-w-lg">
+
+        <img src="https://media.tenor.com/T0bH1i0vj8cAAAAi/tkthao219-bubududu.gif" alt="Happy Bears Hugging" class="w-48 h-48 mx-auto mb-6 rounded-2xl shadow-lg">
+
+        <h1 class="text-5xl text-pink-500 title-font mb-4">
+            Yay! Thank you, Jiya!
+        </h1>
+
+        <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-xl border-2 border-pink-100 w-full mt-4">
+            <p class="text-2xl text-gray-800 font-bold mb-2">
+                I love you so much! ❤️
+            </p>
+            <p class="text-gray-600 text-lg">
+                I love you mera baccha meri jaanu meri jaaan meri wife!!!!!!!!!!!!!!!!!!!😘😘😘
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Floating background hearts
+        const heartsBg = document.getElementById('heartsBg');
+        const heartSymbols = ['❤️', '💖', '💕', '🌸', '✨'];
+
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDelay = `${Math.random() * 5}s`;
+            heart.style.animationDuration = `${Math.random() * 3 + 4}s`;
+            heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+            heartsBg.appendChild(heart);
+        }
+
+        // Button logic
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const mainContainer = document.getElementById('mainContainer');
+        const successScreen = document.getElementById('successScreen');
+        const buttonsContainer = document.getElementById('buttonsContainer');
+
+        const noButtonTexts = [
+            "No",
+            "Are you sure?",
+            "Jiya please 🥺",
+            "Don't do this to me!",
+            "I'm literally crying 😭",
+            "Click Yes!!!",
+            "Okay, now you're being mean 😢",
+            "You can't catch me!"
+        ];
+
+        let noClickCount = 0;
+        let yesButtonSize = 1;
+        let isRunawayMode = false;
+
+        function handleNoInteraction() {
+            noClickCount++;
+
+            // Change text if we haven't run out of prompts
+            if (noClickCount < noButtonTexts.length) {
+                noBtn.innerText = noButtonTexts[noClickCount];
+            } else {
+                noBtn.innerText = "Nice try! 😋";
+            }
+
+            // Increase "Yes" button size
+            yesButtonSize += 0.2;
+            yesBtn.style.transform = `scale(${yesButtonSize})`;
+
+            // Trigger runaway mode after 4 interactions
+            if (noClickCount >= 4) {
+                isRunawayMode = true;
+                noBtn.style.position = 'absolute';
+                moveButton();
+            }
+        }
+
+        function moveButton() {
+            // Calculate random positions within the container bounds
+            const containerRect = mainContainer.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            // Allow it to fly outside the button container, but stay within the card
+            const maxX = containerRect.width - btnRect.width - 40;
+            const maxY = 200; // Vertical range
+
+            const randomX = Math.floor(Math.random() * maxX) - (maxX / 2);
+            const randomY = Math.floor(Math.random() * maxY) - 100;
+
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        // Handle both clicks and hovers for maximum evasion
+        noBtn.addEventListener('click', handleNoInteraction);
+
+        // On desktop, make it run away when hovering (after runaway mode is active)
+        noBtn.addEventListener('mouseover', () => {
+            if (isRunawayMode) {
+                moveButton();
+            }
+        });
+
+        // On mobile, touch triggers movement too
+        noBtn.addEventListener('touchstart', (e) => {
+            if (isRunawayMode) {
+                e.preventDefault(); // Prevent accidental clicking
+                moveButton();
+            }
+        });
+
+        // Yes Button Success Logic
+        yesBtn.addEventListener('click', () => {
+            mainContainer.classList.add('hidden');
+            successScreen.classList.remove('hidden');
+
+            // Fire confetti barrage
+            fireConfetti();
+            let count = 0;
+            const interval = setInterval(() => {
+                fireConfetti();
+                count++;
+                if (count === 4) clearInterval(interval);
+            }, 600);
+        });
+
+        function fireConfetti() {
+            const duration = 3000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 7,
+                    angle: 60,
+                    spread: 55,
+                    origin: {
+                        x: 0
+                    },
+                    colors: ['#ff8fa3', '#ff4d6d', '#ffffff']
+                });
+                confetti({
+                    particleCount: 7,
+                    angle: 120,
+                    spread: 55,
+                    origin: {
+                        x: 1
+                    },
+                    colors: ['#ff8fa3', '#ff4d6d', '#ffffff']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+    </script>
+</body>
+
+</html>
